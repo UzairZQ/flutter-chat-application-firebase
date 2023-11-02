@@ -25,7 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = _auth.currentUser;
       if (user != null) {
         loggedinUser = user;
         print(loggedinUser.email);
@@ -42,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: null,
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () {
                 _auth.signOut();
                 Navigator.pop(context);
@@ -94,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 class MessageBubble extends StatelessWidget {
   const MessageBubble(
-      {required this.text, required this.sender, required this.isMe});
+      {super.key, required this.text, required this.sender, required this.isMe});
   final String text;
   final String sender;
   final bool isMe;
@@ -109,7 +109,7 @@ class MessageBubble extends StatelessWidget {
           style: const TextStyle(color: Colors.black54, fontSize: 12.0),
         ),
         Padding(
-          padding: EdgeInsets.all(10.0),
+          padding:const EdgeInsets.all(10.0),
           child: Material(
             elevation: 5.0,
             borderRadius: isMe
@@ -173,7 +173,7 @@ class MessagesStream extends StatelessWidget {
         return Expanded(
           child: ListView(
             reverse: true,
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             children: messageBubbles,
           ),
         );

@@ -1,4 +1,4 @@
-import 'package:flash_chat_uzair/RoundedButton.dart';
+import 'package:flash_chat_uzair/rounded_button.dart';
 import 'package:flash_chat_uzair/screens/login_screen.dart';
 import 'package:flash_chat_uzair/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
+
+  const WelcomeScreen({super.key});
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -37,6 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: animation.value,
@@ -50,7 +53,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               children: <Widget>[
                 Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     height: 60.0,
                     child: Image.asset('images/logo.png'),
                   ),
@@ -59,7 +62,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'Flash Chat',
-                      speed: Duration(milliseconds: 60),
+                      speed: const Duration(milliseconds: 60),
                       textStyle: const TextStyle(
                           fontSize: 40.0, fontWeight: FontWeight.w900),
                     ),

@@ -1,4 +1,4 @@
-import 'package:flash_chat_uzair/RoundedButton.dart';
+import 'package:flash_chat_uzair/rounded_button.dart';
 import 'package:flash_chat_uzair/constants.dart';
 
 import 'package:flash_chat_uzair/screens/chat_screen.dart';
@@ -33,7 +33,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               Flexible(
                 child: Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     height: 200.0,
                     child: Image.asset('images/logo.png'),
                   ),

@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flash_chat_uzair/RoundedButton.dart';
+import 'package:flash_chat_uzair/rounded_button.dart';
 import 'package:flash_chat_uzair/constants.dart';
 import 'package:flash_chat_uzair/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.teal[100],
       body: ModalProgressHUD(
         inAsyncCall: Spinner,
         child: Padding(
@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Flexible(
                 child: Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     height: 200.0,
                     child: Image.asset('images/logo.png'),
                   ),
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Spinner = true;
                   });
                   try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
+                    final newUser = await _auth.signInWithEmailAndPassword(
                         email: email.trim(), password: password.trim());
                     Navigator.pushNamed(context, ChatScreen.id);
                     setState(() {
